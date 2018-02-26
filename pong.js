@@ -1,3 +1,4 @@
+
 var puck = {
   x: 200,
   y: 200,
@@ -30,12 +31,13 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(0);
   
   player1Score();
   player2Score();
   
   // draw puck
+  fill(115, 108, 230);
   ellipse(puck.x, puck.y, puck.r*2);
   
   // move puck
@@ -47,6 +49,7 @@ function draw() {
   puck.y += puck.ySpeed;
   
   // draw paddles
+  fill(49, 233, 129);
   rect(player1.x, player1.y, player1.wd, player1.ht);
   rect(player2.x-player2.wd, player2.y, player2.wd, player2.ht);
   
@@ -123,13 +126,13 @@ function keyReleased() {
 }
 
 function player1Score() {
-  fill(0,0,100);
+  fill(255);
   textSize(32);
   text('Score: '+score1,50,75,20);
 }
 
 function player2Score() {
-  fill(0,0,100);
+  fill(255);
   textSize(32);
   text('Score: '+score2, 250,75,20);
 }
