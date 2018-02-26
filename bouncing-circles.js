@@ -1,6 +1,7 @@
 //the radius of the circle decreases every time the circle hits and edge of the canvas
 
 var circles = [];
+var counter = 0;
 
 function setup() {
   createCanvas(400, 400);
@@ -13,7 +14,7 @@ function setup() {
       y: height / 2,
       xd: random(-2, 2),
       yd: random(-2, 2),
-      c: color(random(360), 60, 100),
+      c: color(random(360), 60, 100, 0.6),
       r: 20
     }
   }
@@ -22,6 +23,8 @@ function setup() {
 function draw() {
   background(0);
   noStroke();
+  
+  drawCounter();
   
   for (var index = 0; index < 100; index = index + 1) {
     // get circle object
@@ -41,8 +44,9 @@ function draw() {
     if (circle.x > width || circle.x < 0) { 
         circle.r -= 5
       	circle.xd = -circle.xd;
+      	counter += 1;
       	//resets size of circle when it disappears
-      	 if (circle.r = 1) {
+      	 if (circle.r === 1) {
       			circle.r = 20;
     			}
       
@@ -50,7 +54,13 @@ function draw() {
     if (circle.y > height || circle.y < 0) {
       circle.r -= 5;
       circle.yd = -circle.yd;
+      counter += 1;
     }
   }
 }
 
+function drawCounter() {
+  fill(0,0,100);
+  textSize(100);
+  text(counter,125,225);
+}
