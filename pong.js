@@ -1,4 +1,3 @@
-
 var puck = {
   x: 200,
   y: 200,
@@ -77,9 +76,12 @@ function draw() {
     // check if puck is within paddle height...
     if (puck.y > player1.y && puck.y < player1.y + player1.ht) {
       puck.xSpeed = abs(puck.xSpeed);
-      score1 += 1;
     } else {
-      // ???
+      if(puck.x === 0) {
+        score2 += 1;
+        puck.x = 200;
+        puck.y = 200;
+      }
     }
   }
   
@@ -88,9 +90,12 @@ function draw() {
     // check if puck is within paddle height...
     if (puck.y > player2.y && puck.y < player2.y + player2.ht) {
       puck.xSpeed = -abs(puck.xSpeed);
-      score2 += 1;
     } else {
-      // ???
+      if (puck.x === width) {
+        score1 += 1;
+        puck.x = 200;
+        puck.y = 200;
+      }
     }
   }
 }
